@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bon.dao.PaySettingMapper">
+  <resultMap id="BaseResultMap" type="com.bon.model.PaySetting">
+    <constructor>
+      <idArg column="pay_set_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="agency_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="host_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key_psw" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corp_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fee_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_set_id, agency_id, host_url, private_key, private_key_psw, corp_no, fee_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting (pay_set_id, agency_id, host_url, 
+      private_key, private_key_psw, corp_no, 
+      fee_code)
+    values (#{paySetId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{hostUrl,jdbcType=VARCHAR}, 
+      #{privateKey,jdbcType=VARCHAR}, #{privateKeyPsw,jdbcType=VARCHAR}, #{corpNo,jdbcType=VARCHAR}, 
+      #{feeCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        pay_set_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="hostUrl != null">
+        host_url,
+      </if>
+      <if test="privateKey != null">
+        private_key,
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw,
+      </if>
+      <if test="corpNo != null">
+        corp_no,
+      </if>
+      <if test="feeCode != null">
+        fee_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        #{paySetId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    <set>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        host_url = #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        private_key = #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        corp_no = #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        fee_code = #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      host_url = #{hostUrl,jdbcType=VARCHAR},
+      private_key = #{privateKey,jdbcType=VARCHAR},
+      private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      corp_no = #{corpNo,jdbcType=VARCHAR},
+      fee_code = #{feeCode,jdbcType=VARCHAR}
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bon.model.PaySetting">
+    <constructor>
+      <idArg column="pay_set_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="agency_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="host_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key_psw" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corp_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fee_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_set_id, agency_id, host_url, private_key, private_key_psw, corp_no, fee_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting (pay_set_id, agency_id, host_url, 
+      private_key, private_key_psw, corp_no, 
+      fee_code)
+    values (#{paySetId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{hostUrl,jdbcType=VARCHAR}, 
+      #{privateKey,jdbcType=VARCHAR}, #{privateKeyPsw,jdbcType=VARCHAR}, #{corpNo,jdbcType=VARCHAR}, 
+      #{feeCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        pay_set_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="hostUrl != null">
+        host_url,
+      </if>
+      <if test="privateKey != null">
+        private_key,
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw,
+      </if>
+      <if test="corpNo != null">
+        corp_no,
+      </if>
+      <if test="feeCode != null">
+        fee_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        #{paySetId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    <set>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        host_url = #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        private_key = #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        corp_no = #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        fee_code = #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      host_url = #{hostUrl,jdbcType=VARCHAR},
+      private_key = #{privateKey,jdbcType=VARCHAR},
+      private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      corp_no = #{corpNo,jdbcType=VARCHAR},
+      fee_code = #{feeCode,jdbcType=VARCHAR}
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.bon.model.PaySetting">
+    <constructor>
+      <idArg column="pay_set_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="agency_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="host_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="private_key_psw" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corp_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="fee_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pay_set_id, agency_id, host_url, private_key, private_key_psw, corp_no, fee_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pay_setting
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting (pay_set_id, agency_id, host_url, 
+      private_key, private_key_psw, corp_no, 
+      fee_code)
+    values (#{paySetId,jdbcType=INTEGER}, #{agencyId,jdbcType=INTEGER}, #{hostUrl,jdbcType=VARCHAR}, 
+      #{privateKey,jdbcType=VARCHAR}, #{privateKeyPsw,jdbcType=VARCHAR}, #{corpNo,jdbcType=VARCHAR}, 
+      #{feeCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bon.model.PaySetting">
+    insert into pay_setting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        pay_set_id,
+      </if>
+      <if test="agencyId != null">
+        agency_id,
+      </if>
+      <if test="hostUrl != null">
+        host_url,
+      </if>
+      <if test="privateKey != null">
+        private_key,
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw,
+      </if>
+      <if test="corpNo != null">
+        corp_no,
+      </if>
+      <if test="feeCode != null">
+        fee_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paySetId != null">
+        #{paySetId,jdbcType=INTEGER},
+      </if>
+      <if test="agencyId != null">
+        #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    <set>
+      <if test="agencyId != null">
+        agency_id = #{agencyId,jdbcType=INTEGER},
+      </if>
+      <if test="hostUrl != null">
+        host_url = #{hostUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKey != null">
+        private_key = #{privateKey,jdbcType=VARCHAR},
+      </if>
+      <if test="privateKeyPsw != null">
+        private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      </if>
+      <if test="corpNo != null">
+        corp_no = #{corpNo,jdbcType=VARCHAR},
+      </if>
+      <if test="feeCode != null">
+        fee_code = #{feeCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bon.model.PaySetting">
+    update pay_setting
+    set agency_id = #{agencyId,jdbcType=INTEGER},
+      host_url = #{hostUrl,jdbcType=VARCHAR},
+      private_key = #{privateKey,jdbcType=VARCHAR},
+      private_key_psw = #{privateKeyPsw,jdbcType=VARCHAR},
+      corp_no = #{corpNo,jdbcType=VARCHAR},
+      fee_code = #{feeCode,jdbcType=VARCHAR}
+    where pay_set_id = #{paySetId,jdbcType=INTEGER}
+  </update>
+</mapper>
